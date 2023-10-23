@@ -21,3 +21,10 @@ f2= TIN_polyex([1 1 3 3 6 6 20 20 30 20000 60000]);
 
 %%Problem 3
 
+%testing this
+
+%Testing Vers 2
+
+%Testing it vers 3
+
+%commit change test
