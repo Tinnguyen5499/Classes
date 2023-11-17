@@ -51,19 +51,24 @@ rlocus(G_pade_approx)
 Ku= 3.33;
 wu= 0.317;
 Tu=1/wu;
-alpha = 0.6;
+alpha = 0.05;
 beta=0.5;
 gamma=0.125;
 
 Kp=alpha*Ku;
 TI=beta*Tu
 TD=gamma*Tu;
+% TI=0.5
+% TD=0.125
+% Kp=0.6
+
 
 D_4a=Kp*(1+(1/(TI*s))+TD*s);
 
 
 
 G4= G_with_delay*D_4a
+pade_G4=pade(G4,2)
 
 figure(8)
 
@@ -71,5 +76,35 @@ bode(G4)
 
 figure(9)
 
-step(G4)
+margin(G4)
+
+figure (10)
+
+rlocus(pade(G4,2))
+
+figure(11)
+
+G=G_with_delay
+
+G_closed=G/(1+G)
+
+G4_closed= G4/(1+G4)
+
+step(G)
+
+figure(12)
+
+step(G_closed)
+
+figure(13)
+
+
+
+
+t=0:0.1:3600*5;
+
+x=20*heaviside(t)+15*heaviside(t-1)+ 10*heaviside(t - 3600*1)-25*heaviside(t-3600*4);
+
+lsim(G4_closed,x,t)
+
 
