@@ -22,21 +22,54 @@ yline(0)
 box on; grid on;
 hold on
 
-plotf(A)
+x=plotf(A);
 
-%moving A to 6,3
+% %moving A to 6,3
+% 
+% A1=Tt(6-3,3-2)*A;
+% plotf(A1)
+% 
+% A2=Tfy*A1;
+% 
+% plotf(A2)
+% 
+% A3=Tt(6,-3)*Ts(0.6,0.6)*Tt(-6,3)*A2;
+% 
+% plotf(A3)
+% 
+% A4=Tt(7,-2)*Tr(315)*Tt(-7,2)*A3;
+% 
+% plotf(A4)
 
-A1=Tt(6-3,3-2)*A;
-plotf(A1)
+%% Translating
 
-A2=Tfy*A1;
+% for n=2:10
+% 
+% [a,b]=ginput(1);
+% 
+% A1=Tt(a,b)*Tt(-A(1,1),-A(1,2))*A;
+% 
+% x(n)=plotf(A1);
+% 
+% delete(x(n-1));
+% 
+% n=n+1;
+% 
+% end
 
-plotf(A2)
+% Scaling
+for n=2:10
 
-A3=Tt(6,-3)*Ts(0.6,0.6)*Tt(-6,3)*A2;
+[a,b]=ginput(2);
 
-plotf(A3)
+A1=Tt(A(1,1),A(1,2))*Ts((a(2)-a(1)+1),b(2)-b(1)+1)*Tt(-A(1,1),-A(1,2))*A;
+% A1=Ts(a(2)-a(1),b(2)-b(1))*A;
 
-A4=Tt(7,-2)*Tr(315)*Tt(-7,2)*A3;
+x(n)=plotf(A1);
 
-plotf(A4)
+delete(x(n-1));
+
+n=n+1;
+
+end
+
