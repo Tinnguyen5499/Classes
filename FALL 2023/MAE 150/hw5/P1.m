@@ -14,16 +14,22 @@ clc;
 % matrices (element and global) and clearly indicate which is which in the output (use the element
 % numbers indicated in the figure).
 
-DOF = 2*4;
-E= 210 * 10^6;
-A= 19.5 * 10^(-4);
-L1= 
+% DOF = 2*4;
+% E= 210 * 10^6;
+% A= 19.5 * 10^(-4);
+% L1= 
+% 
+% % Assembling local stiffness matrix
+% % node 1
+% 
+% k1= (A*E)/L1
+% K1= k1 * ()
 
-% Assembling local stiffness matrix
-% node 1
+nodes(1,:)=[0 0]
+nodes(2,:)=[0 4]
+nodes(3,:)=[-3 4]
+nodes(4,:)=[-6 0]
 
-k1= (A*E)/L1
-K1= k1 * ()
-
+plot(nodes(:,1),nodes(:,2))
 
 
