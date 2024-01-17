@@ -11,24 +11,15 @@ v_bar=squeeze(mean(v(150:end,:,:)));
 figure
 
 %% plot u_bar
-subplot(2,1,1)
+
 pcolor(x,y,u_bar)
 rectangle('Position',[-0.5 -0.5 1 1],'Curvature',[1 1],'LineStyle','none','FaceColor',[1 1 1]);
 xlabel('x')
 ylabel('y')
-title('u bar')
-shading interp
-axis equal tight
-colorbar
-%% plot v_bar
-subplot(2,1,2)
-pcolor(x,y,v_bar)
-rectangle('Position',[-0.5 -0.5 1 1],'Curvature',[1 1],'LineStyle','none','FaceColor',[1 1 1]);
-xlabel('x')
-ylabel('y')
-title('v bar')
+title('streamline overlay on the plot of u bar')
 shading interp
 axis equal tight
 colorbar
 
+%% plot streamline
 streamline(x',y',u_bar',v_bar',x(1,:),y(1,:))
