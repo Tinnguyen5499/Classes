@@ -19,7 +19,11 @@ ylabel('y')
 title('streamline overlay on the plot of u bar')
 shading interp
 axis equal tight
-colorbar
+
+hold on
 
 %% plot streamline
-streamline(x',y',u_bar',v_bar',x(1,:),y(1,:))
+
+% Fixed the number of streamline as the example code for visibility
+
+streamline(x',y',u_bar',v_bar', -4*ones(10,1), [-4 -3 -2 -1 -0.01 0.01 1 2 3 4])

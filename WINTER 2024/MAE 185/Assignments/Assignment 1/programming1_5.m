@@ -32,7 +32,7 @@ pcolor(x,y,k)
 rectangle('Position',[-0.5 -0.5 1 1],'Curvature',[1 1],'LineStyle','none','FaceColor',[1 1 1]);
 xlabel('x')
 ylabel('y')
-title('u bar')
+title('Turbulence Kinetic Energy')
 shading interp
 axis equal tight
 colorbar

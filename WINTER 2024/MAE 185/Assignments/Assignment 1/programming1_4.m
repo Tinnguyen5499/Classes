@@ -26,7 +26,7 @@ for ti=1:nt
     rectangle('Position',[-0.5 -0.5 1 1],'Curvature',[1 1],'LineStyle','none','FaceColor',[1 1 1]);
     xlabel('x')
     ylabel('y')
-    title('u')
+    title('u fluctuation')
     shading interp
     axis equal tight
     colorbar
@@ -38,7 +38,7 @@ for ti=1:nt
     rectangle('Position',[-0.5 -0.5 1 1],'Curvature',[1 1],'LineStyle','none','FaceColor',[1 1 1]);
     xlabel('x')
     ylabel('y')
-    title('v')
+    title('v fluctuation')
     shading interp
     axis equal tight
     colorbar
