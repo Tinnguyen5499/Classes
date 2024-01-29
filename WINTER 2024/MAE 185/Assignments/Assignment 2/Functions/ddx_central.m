@@ -20,10 +20,12 @@ for y=1:ny %looping through each element in y direction
         dfx(x,y) = (f(x+1,y)-f(x-1,y))/(2*dx); %Second-order central difference
     end 
 
+    %% FIXED BECAUSE CENTRAL DIFFERENCE NEED SECOND ORDER
+
     %derivative of first elements using first-order forward difference
-    dfx(1,y) = (f(2,y)-f(1,y))/dx;
+    dfx(1,y) = (-3*f(1,y)+4*f(2,y)-f(3,y))/2/dx;
     
     %derivative of last elements using first-order backward difference
-    dfx(end,y) = (f(end,y)-f(end-1,y))/dx;
+    dfx(end,y) = (3*f(end,y)-4*f(end-1,y)+f(end-2,y))/2/dx;
 end 
 end

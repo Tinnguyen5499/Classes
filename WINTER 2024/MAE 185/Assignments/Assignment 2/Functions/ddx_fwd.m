@@ -22,5 +22,6 @@ for y=1:ny %looping through each element in y direction
 
     %derivative of last elements using first-order backward difference
     dfx(end,y) = (f(end,y)-f(end-1,y))/dx;
+    
 end 
 end
