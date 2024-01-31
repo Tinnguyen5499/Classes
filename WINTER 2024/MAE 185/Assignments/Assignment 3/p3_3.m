@@ -15,20 +15,22 @@ cy=1;
 dt_max=(dx*dy)/(cx*dy+cy*dx);
 SF=1;
 dt_safe=dt_max/SF;
-
-X(1,:,:)=T;
+X=T;
+clearvars T
+T(1,:,:)=X;
 
 t_end=2;
 steps=t_end/dt_safe;
 
 
-
 for n= 1:steps
-    Y(n,:,:)=(-cx*ddx_bwd(squeeze(X(n,:,:)),dx)-cy*ddy_bwd(squeeze(X(n,:,:)),dy))*dt_safe;
-    X(n+1,:,:)=X(n,:,:)+Y(n,:,:);
+    R(n,:,:)=cx*ddx_fwd(squeeze(T(n,:,:)),dx)+cy*ddy_fwd(squeeze(T(n,:,:)),dy);
+    predictor(n+1,:,:)=T(n,:,:)-dt_safe*(R(n,:,:));
+    Y(n+1,:,:)=cx*ddx_bwd(squeeze(predictor(n+1,:,:)),dx)  + cy*ddy_bwd(squeeze(predictor(n+1,:,:)),dy);
+    T(n+1,:,:)=(1/2)*( (T(n,:,:)+predictor(n+1,:,:)) - dt_safe*( Y(n+1,:,:)));
 
     %% Plotting
-    pcolor(xx,yy,squeeze(X(n,:,:)));
+    pcolor(xx,yy,squeeze(T(n,:,:)));
     xlabel('x')
     ylabel('y')
     title(['t=',num2str(n*dt_safe),'s'])
