@@ -1,0 +1,38 @@
+close all;
+clear all;
+clc;
+
+load("supersonicJetLES_xyPlane.mat");
+addpath("functions");
+
+cp=1005;
+cv=718;
+mu0=1.735*10^(-5);
+S1=110.4;
+R=cp-cv;
+
+U=prim2cons(rho,u,v,T,cv);
+[rho,u,v,T,p,e,Et] = cons2prim(U,R,cv);
+[mu] = sutherland(T);
+
+%% Plotting
+
+variables={squeeze(U(1,:,:));squeeze(U(2,:,:));squeeze(U(3,:,:));p;e;Et;mu};
+titles={'\rho','\rhou u','\rhou v','T','p','e','E_{t}','\mu' };
+symbol_units={'\rhou [kg/s/m^2]'; '\rho';'\rhou u','\rhou v','T','p','e','E_{t}','\mu'};
+
+for n=1:8
+subplot(2,4,8)
+    pcolor(xx,yy,variables{n});
+    xlabel('x')
+    ylabel('y')
+    colorbar
+    cb = colorbar; 
+    ylabel(cb,'\rhou [kg/s/m^2]')
+    title(titles{n})
+    shading interp
+    axis equal tight
+
+end
+    
+
