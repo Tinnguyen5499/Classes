@@ -17,18 +17,18 @@ U=prim2cons(rho,u,v,T,cv);
 
 %% Plotting
 
-variables={squeeze(U(1,:,:));squeeze(U(2,:,:));squeeze(U(3,:,:));p;e;Et;mu};
-titles={'\rho','\rhou u','\rhou v','T','p','e','E_{t}','\mu' };
-symbol_units={'\rhou [kg/s/m^2]'; '\rho';'\rhou u','\rhou v','T','p','e','E_{t}','\mu'};
+variables={squeeze(U(1,:,:));squeeze(U(2,:,:));squeeze(U(3,:,:));T;p;e;Et;mu};
+titles={'\rho';'\rhou';'\rhov';'T';'p';'e';'E_{t}';'\mu' };
+symbol_units={'\rho [kg/m^3]';'\rhou [kg/s/m^2]';'\rhou [kg/s/m^2]';'T [K]';'p [kg/m/s]';'e [J/kg]';'E_{t} [kg/m/s^2]';'\mu [kg/m/s]' };
 
 for n=1:8
-subplot(2,4,8)
+subplot(2,4,n)
     pcolor(xx,yy,variables{n});
     xlabel('x')
     ylabel('y')
     colorbar
     cb = colorbar; 
-    ylabel(cb,'\rhou [kg/s/m^2]')
+    ylabel(cb,symbol_units{n})
     title(titles{n})
     shading interp
     axis equal tight
