@@ -1,0 +1,18 @@
+load('encoder1_step_response_data.mat');
+
+load('avg_data.mat');
+
+l=plot(tstep,ystep,t,y,'r');
+set(l,'linewidth',2);
+lgd=legend('Simulated Step Response','Average Measured Step Response')
+   title(plttitle);
+   xlabel('time [sec]');
+
+          ylabel('encoder 1 [counts]')
+
+
+          ax=gca;
+    ax.FontSize=20;
+    fontsize(lgd,16,'points')
+
+

@@ -1,0 +1,27 @@
+close all;
+clear all;
+clc;
+
+
+for n=1:5
+    data=readecp("OpenLoop_1DOF_TopHold_Run"+n+".txt",'Sample','Time','Commanded Pos','Encoder 1 Pos','Encoder 2 Pos','Control Effort')
+    commandedPos(:,n)=data(:,3);
+    encoder1Pos(:,n)=data(:,4);
+    encoder2Pos(:,n)=data(:,5);
+    controlEffort(:,n)=data(:,6);
+end 
+
+commandedPosAvg=mean(commandedPos,2);
+
+encoderPosAvg1=mean(encoder1Pos,2);
+encoderPosAvg2=mean(encoder2Pos,2);
+ControlEffortAvg=mean(controlEffort,2);
+Time=data(:,2);
+
+table(Time,)
+
+writetable(T,'davgTable.txt')
+
+
+%% Writing Result
+
