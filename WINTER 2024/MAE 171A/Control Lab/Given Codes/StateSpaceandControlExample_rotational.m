@@ -11,11 +11,11 @@ cycles_closed=10; % number of cycles of characteristic time closed loop
 close_loop_step_target=2000; % closed loop step target [counts]
 
 % system parameters
-wn1=1; % rad/s
-wn2=1; % rad/s
-B1=0.1; % beta
-B2=0.1;  % beta
-k2=0.01; % V/m
+wn1=38.1780; % rad/s
+wn2=24.2116; % rad/s
+B1=0.1824; % beta
+B2=0.0255;  % beta
+k2=0.022; % V/m
 
 m1=k2/wn1^2; % Vs^2/counts
 m2=k2/wn2^2; % Vs^2/counts
@@ -56,6 +56,7 @@ set(gca,'FontSize',20,'LineWidth',2);
 xlabel('time [s]');
 ylabel('x_1/U [counts/Volts]')
 ylim(1.1*[min(y(:,1)) max(y(:,1))])
+title('Open loop Step response')
 
 subplot(223)
 plot(t,y(:,2),'LineWidth',2);

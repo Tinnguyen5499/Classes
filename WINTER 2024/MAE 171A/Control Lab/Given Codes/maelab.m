@@ -540,7 +540,7 @@ if option==2,
    clf % use to be clg
 
    l=plot(tstep,ystep,t,y,'r:');
-   set(l,'linewidth',1.5);
+   set(l,'linewidth',2);
    if length(y)>0,
        legend('simulated step response','measured step response')
    else
